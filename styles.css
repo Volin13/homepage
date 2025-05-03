@@ -22,6 +22,7 @@ body {
   margin: 0 auto;
   padding: 0 30px;
   max-width: 900px;
+  padding-top: 30px;
 }
 
 .fh {
@@ -54,6 +55,7 @@ body {
   .main-info,
   .contact_info_container {
     flex-direction: column;
+    position: relative;
   }
 
   .contact_info_container {
@@ -92,11 +94,12 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+}
+.contact-info__block--around{
+  justify-content: space-around;
 }
 
-.contact-info__block--center {
-  justify-content: center;
-}
 
 .contact-info__item {
   color: var(--secondary-text-color);
@@ -127,8 +130,8 @@ body {
 
 .contact-info__avatar {
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 300px;
+  height: 300px;
   object-fit: cover;
   border: 3px solid;
   border-color: var(--text-decoration-color);
@@ -269,4 +272,132 @@ body {
   color: var(--secondary-text-color);
 }
 
+.icon-links{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  transform: translate(-50%, -50%);
+}
 
+
+/* TOOLTIP  */
+
+.tooltip-container {
+  position: absolute;
+  display: inline-block;
+
+}
+.tooltip-container--background{
+  transition: box-shadow 0.3s ease;
+}
+.tooltip-container--background::after {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: red;
+  filter: blur(20px);
+  opacity: 0.6;
+  z-index: -1;
+  animation: glowPulse 2s infinite ease-in-out;
+  border-radius: inherit;
+}
+
+/* .tooltip-container--background:hover,
+.tooltip-container--background:focus {
+  border: 1px solid var(--durability-text-color);
+ 
+} */
+
+.tooltip-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.icon {
+  width: 2rem;
+  stroke: var(--primary-text-color);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  transition: transform 0.2s, stroke 0.2s;
+}
+
+.tooltip-button:hover .icon {
+  transform: scale(1.25);
+  stroke: var(--text-decoration-color); 
+
+}
+
+.tooltip-text {
+  position: absolute;
+  top: 50%;
+  left: 3.5rem;
+  transform: translateY(-50%) scale(0);
+  transform-origin: left;
+  background-color: white;
+  border: 1px solid var(--icon-color);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  z-index: 20;
+  white-space: nowrap;
+}
+
+.tooltip-container:hover .tooltip-text {
+  transform: translateY(-50%) scale(1);
+}
+
+
+/* icon-links*/
+
+.icon-links {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  transform: translateX(50%);
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* щоб кнопки не блокували аватар */
+}
+
+.tooltip-container {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform-origin: left center;
+  pointer-events: auto; /* повертаємо взаємодію тільки на кнопки */
+}
+
+.tooltip-container:nth-child(1) { transform: rotate(-60deg) translateX(175px) rotate(60deg); }
+.tooltip-container:nth-child(2) { transform: rotate(-30deg) translateX(175px) rotate(30deg); }
+.tooltip-container:nth-child(3) { transform: rotate(0deg) translateX(175px); }
+.tooltip-container:nth-child(4) { transform: rotate(30deg) translateX(175px) rotate(-30deg); }
+.tooltip-container:nth-child(5) { transform: rotate(60deg) translateX(175px) rotate(-60deg); }
+
+/* animations  */
+
+@keyframes glowPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+}
