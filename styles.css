@@ -6,16 +6,25 @@
   box-sizing: border-box;
 }
 
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.5;
+ font-size: 18px;
+ font-family: 'Poppins', sans-serif;
 
+  --bg-color: #f5efdc;
   --primary-text-color: #181820;
   --secondary-text-color: #5c5c62;
   --durability-text-color: #6a737d9c;
   --icon-color: #6a737d;
   --border-color: #ff9a0045;
-  --text-decoration-color: #ff9a00;
+  --primary-decoration-color: #ff9a00;
+  --secondary-decoration-color: #ffcb7c;
 }
 
 .container {
@@ -40,6 +49,8 @@ body {
 .resume {
   margin: 50px auto;
   border: 1px solid #f5f5f5;
+  background-color: var(--bg-color);
+  overflow: hidden;
   box-shadow: 1px 1px 7px 7px #f5f5f5;
   padding: 30px 0;
   max-width: 900px;
@@ -81,7 +92,7 @@ body {
 .contact-info__header {
   color: var(--primary-text-color);
   margin-bottom: 15px;
-  text-decoration-color: var(--text-decoration-color);
+  text-decoration-color: var(--primary-decoration-color);
   text-decoration-line: underline;
 }
 
@@ -100,41 +111,13 @@ body {
   justify-content: space-around;
 }
 
-
-.contact-info__item {
-  color: var(--secondary-text-color);
-  text-decoration: none;
-  display: flex;
-  justify-content: start;
-}
-
-.contact-info__item:not(:last-child) {
-  margin-bottom: 20px;
-}
-
-.contact-info__item-icon-wrapper {
-  margin-right: 10px;
-  width: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.contact-info__item-icon path {
-  fill: var(--icon-color);
-}
-
-.contact-info__item-icon {
-  height: 1.1428rem;
-  vertical-align: text-bottom;
-}
-
 .contact-info__avatar {
   border-radius: 50%;
   width: 300px;
   height: 300px;
   object-fit: cover;
   border: 3px solid;
-  border-color: var(--text-decoration-color);
+  border-color: var(--primary-decoration-color);
 }
 
 /* Intro and skills styles */
@@ -145,7 +128,7 @@ body {
 }
 
 .intro__icon-wrapper {
-  margin-right: 30px;
+
   width: 30px;
   display: flex;
   justify-content: center;
@@ -157,7 +140,7 @@ body {
 }
 
 .intro__icon path {
-  fill: var(--text-decoration-color);
+  fill: var(--primary-decoration-color);
 }
 
 .intro_text {
@@ -165,17 +148,91 @@ body {
   text-align: justify;
 }
 
+/* SKILLS  */
+
 .skills__header {
   color: var(--secondary-text-color);
   text-align: center;
+  font-size: 24px;
+}
+.skills__header span {
+  display: block;
+}
+.skills__header .soft {
+  transition: filter 0.4s ease, opacity 0.4s ease;
+}
+
+.skills__header:hover .soft {
+  filter: blur(4px);
+  opacity: 0.6;
+}
+.skills__header:hover .hard {
+  text-shadow: 0 0 3px #000, 0 0 8px var(--durability-text-color);
+  transform: scale(1.05);
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.skills__el-mb{
   margin-bottom: 15px;
 }
+.skills__list{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  list-style: none;
+}
+.skills__item{
 
-.skills__text {
-  color: var(--secondary-text-color);
-  text-align: justify;
+  background-color: var(--primary-text-color);
+  color: #ffcc00;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 0 10px var(--primary-decoration-color), 0 0 20px var(--primary-decoration-color) inset;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-shadow: 0 0 8px var(--secondary-decoration-color), 0 0 16px var(--secondary-decoration-color);
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+
 }
 
+.skills__item .poof-icon,
+.skills__item .emoji-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+
+.poof-icon,
+.emoji-icon {
+  width: 40px;
+  height: 40px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+.skills__item:hover .trait-text {
+  opacity: 0;
+}
+
+.skills__item:hover .poof-icon {
+  opacity: 1;
+  animation: poofFadeOut 0.4s ease forwards;
+}
+
+.skills__item:hover .emoji-icon {
+  animation: emojiFadeIn 0.6s ease forwards;
+  animation-delay: 0.4s;
+}
 /* Experience and additional info styles */
 
 .experiences {
@@ -198,7 +255,7 @@ body {
 
 .experiences__company-header-name {
   color: var(--primary-text-color);
-  text-decoration-color: var(--text-decoration-color);
+  text-decoration-color: var(--primary-decoration-color);
   text-decoration-line: underline;
   text-align: left;
   margin-bottom: 20px;
@@ -272,14 +329,7 @@ body {
   color: var(--secondary-text-color);
 }
 
-.icon-links{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 200px;
-  height: 200px;
-  transform: translate(-50%, -50%);
-}
+
 
 
 /* TOOLTIP  */
@@ -307,12 +357,6 @@ body {
   border-radius: inherit;
 }
 
-/* .tooltip-container--background:hover,
-.tooltip-container--background:focus {
-  border: 1px solid var(--durability-text-color);
- 
-} */
-
 .tooltip-button {
   background: none;
   border: none;
@@ -332,7 +376,7 @@ body {
 
 .tooltip-button:hover .icon {
   transform: scale(1.25);
-  stroke: var(--text-decoration-color); 
+  stroke: var(--primary-decoration-color); 
 
 }
 
@@ -361,6 +405,7 @@ body {
 
 /* icon-links*/
 
+
 .icon-links {
   position: absolute;
   top: -20px;
@@ -368,7 +413,7 @@ body {
   transform: translateX(50%);
   width: 100%;
   height: 100%;
-  pointer-events: none; /* щоб кнопки не блокували аватар */
+  pointer-events: none;
 }
 
 .tooltip-container {
@@ -376,7 +421,7 @@ body {
   top: 50%;
   left: 0;
   transform-origin: left center;
-  pointer-events: auto; /* повертаємо взаємодію тільки на кнопки */
+  pointer-events: auto; 
 }
 
 .tooltip-container:nth-child(1) { transform: rotate(-60deg) translateX(175px) rotate(60deg); }
@@ -385,13 +430,82 @@ body {
 .tooltip-container:nth-child(4) { transform: rotate(30deg) translateX(175px) rotate(-30deg); }
 .tooltip-container:nth-child(5) { transform: rotate(60deg) translateX(175px) rotate(-60deg); }
 
+/* TITLE ENTRANCE */
+.hero__title{
+  color: var(--primary-text-color);
+  font-weight: 900;
+  font-size: 30px;
+  letter-spacing: 1px;
+}
+
+.hero__text span{
+  position: relative;
+  overflow: hidden;
+  display: block;
+  line-height: 1.2;
+}
+
+.hero__text span::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background:  var(--bg-color);
+  animation: a-ltr-after 2s cubic-bezier(.77,0,.18,1) forwards;
+  transform: translateX(-101%);
+}
+
+.hero__text span::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--secondary-decoration-color);
+  animation: a-ltr-before 2s cubic-bezier(.77,0,.18,1) forwards;
+  transform: translateX(0);
+}
+
 /* animations  */
+
+/* INTRO  */
+.typewriter {
+  overflow: hidden;
+  width: 0;
+  white-space: nowrap;
+  border-right: 2px solid transparent;
+  animation: typing 4s steps(60, end) forwards, blink 0.7s step-end 6;
+}
+.typewriter:nth-child(1){animation-delay: 0;}
+.typewriter:nth-child(2){animation-delay: 4s;}
+.typewriter:nth-child(3){animation-delay: 8s;}
+.typewriter:nth-child(4){animation-delay: 12s;}
+.typewriter:nth-child(5){animation-delay: 16s;}
+.typewriter:nth-child(6){animation-delay: 20s;}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: black }
+}
+
+
+
+
+/* AVATAR  */
 .glow-follow {
   position: relative;
   z-index: 1;
   transition: box-shadow 0.1s ease;
   border-radius: 50%;
 }
+
 
 @keyframes glowPulse {
   0% {
@@ -407,3 +521,58 @@ body {
     opacity: 0.6;
   }
 }
+
+/* TITLE  */
+.hero__text span:nth-of-type(1)::before,
+.hero__text span:nth-of-type(1)::after{
+    animation-delay: 1s;
+}
+
+.hero__text span:nth-of-type(2)::before,
+.hero__text span:nth-of-type(2)::after{
+    animation-delay: 1.5s;
+}
+
+@keyframes a-ltr-after{
+  0% {transform: translateX(-100%)}
+  100% {transform: translateX(101%)}
+}
+
+@keyframes a-ltr-before{
+  0% {transform: translateX(0)}
+  100% {transform: translateX(200%)}
+}
+
+/* skills */
+@keyframes poofFadeOut {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+}
+
+@keyframes emojiFadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5) rotate(-10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(0);
+  }
+}
+
+.vibrate {
+  animation: subtle-shake 1s infinite;
+}
+@keyframes subtle-shake {
+  0%, 100% { transform: translate(0); }
+  25% { transform: translate(0.5px, -0.5px); }
+  50% { transform: translate(-0.5px, 0.5px); }
+  75% { transform: translate(0.5px, 0.5px); }
+}
+
