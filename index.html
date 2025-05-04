@@ -10,7 +10,7 @@
     <main>
       <div class="resume">
         <div class="container">
-          <div class="resume__block">
+          <section class="resume__block">
             <div class="contact_info_container fh contact-info__block--around">
     
               <div class="contact-info__block glow-follow">
@@ -102,21 +102,29 @@
 
                 </div>
               </div>
-    
-              <h2 class="hero__text">
-                <span class="contact-info__header hero__title">Oleh Kukharyshyn</span>
-                <span class="contact-info__sub-header">Full-Stack Developer</span>
-              </h2>
+              <div class="hero__text-container">
+                <h2 class="hero__text">
+                  <span class="contact-info__header hero__title">Oleh Kukharyshyn</span>
+                  <span class="contact-info__sub-header">Full-Stack Developer</span>
+                </h2>
+                <div class="additional-info__languages ">
+                  <h3 class="additional-info__languages-header hero__title hero__title-small">Languages</h3>
+                  <p class="additional-info__languages-item">English <small>B+</small> </p>
+                  <p class="additional-info__languages-item">
+                    Ukrainian <small>native</small>
+                  </p>
+                </div>
+              </div>
 
 
             </div>
 
           </div>
-        </div>
 
-        <!-- PERSONAL INFO  -->
+
+        <!-- PERSONAL INTRO  -->
         <div class="container">
-          <div class="resume__block">
+          <section class="resume__block">
             <div class="intro">
               <div class="intro__icon-wrapper">
                 <svg
@@ -145,11 +153,11 @@
                 <p class="typewriter"> attention and work efficiently.</p>
               </div>
             </div>
-          </div>
+          </section>
         </div>
         <!-- SKILLS  -->
         <div class="container">
-            <div class="resume__block">
+            <section class="resume__block">
               <div class="skills">
                 <h3 class="hero__title skills__header skills__el-mb">
                   <span class="vibrate soft">Soft</span>
@@ -217,78 +225,73 @@
                   <li class="skills__item"> Material UI</li>
                 </ul>
               </div>
-            </div>
+            </section>
           </div>
 
           <div class="container">
-            <div class="resume__block">
-              <div class="main-info fh">
-                <div class="experiences">
-                  <h3 class="experiences__header">Experience</h3>
-          
-                  <div class="experiences__block">
-                      <div class="experiences__block">
-                        <h4 class="experiences__title">General Worker (Seasonal)</h4>
-                        <p class="experiences__text">Various Companies, Europe</p>
-                        <p class="experiences__text">2018 - 2022</p>
-                        <ul class="experiences__list">
-                          <li>Worked in demanding production environments across several countries.</li>
-                          <li>Adapted quickly to new cultures, languages, and working conditions.</li>
-                          <li>Developed strong discipline, time management, and teamwork skills.</li>
-                        </ul>
-                      </div>
-                      
-                    <h4 class="experiences__title">Full-Stack Development Trainee</h4>
-                    <p class="experiences__text">GoIT (Online Bootcamp)</p>
-                    <p class="experiences__text">2022 - 2023</p>
-                    <ul class="experiences__list">
-                      <li>Completed an intensive full-stack development course with focus on React, Node.js, MongoDB, and PostgreSQL.</li>
-                      <li>Developed several full-cycle pet projects, from planning and design to deployment.</li>
-                      <li>Gained experience in working with version control systems (Git) and agile development practices.</li>
-                      <li>Collaborated with other students to simulate real-world team development.</li>
-                    </ul>
+            <section class="timeline">
+              <h2 class="hero__title">Experience & Education</h2>
+            
+              <div class="timeline__container">
+                <div class="timeline__item right">
+                  <div class="timeline__content js-toggle">
+                    <h3>2012–2018 — Transport Engineer</h3>
+                    <div class="timeline__details">
+                      <p>Studied at National Aviation University</p>
+                      <ul>
+                        <li>Studied transport systems and technical processes.</li>
+                        <li>Built foundational skills in engineering and problem-solving.</li>
+                      </ul>
+                    </div>
                   </div>
-          
                 </div>
-          
-                <div class="additional-info fv">
-                    <div class="additional-info__education">
-                      <h3 class="additional-info__education-header">Education</h3>
-                      <div class="additional-info__education-university">
-                        <span class="additional-info__education-university-durability"
-                          >2012 - 2018</span
-                        >
-                        <h3 class="additional-info__education-university-speciality">
-                          Transport engeneer 
-                        </h3>
-                        <p class="additional-info__education-university-name">
-                           National Aviation University 
-                        </p>
-                      </div>
-                      <div class="additional-info__education-university">
-                        <span class="additional-info__education-university-durability"
-                          >2022 - 2023</span
-                        >
-                        <h3 class="additional-info__education-university-speciality">
-                          Full-Stack Development
-                        </h3>
-                        <p class="additional-info__education-university-name">
-                            GoIT (Online Bootcamp)
-                        </p>
-                      </div>
-        
+                <div class="timeline__item left">
+                  <div class="timeline__content js-toggle">
+                    <h3>2018-2022 - General Worker (Seasonal)</h3>
+                    <div  class="timeline__details">
+                      <p>Various Companies, Europe</p>
+                      <ul>
+                        <li>Worked in demanding production environments across several countries.</li>
+                        <li>Adapted quickly to new cultures, languages, and working conditions.</li>
+                        <li>Developed strong discipline, time management, and teamwork skills.</li>
+                      </ul>
                     </div>
-                  
-                    <div class="additional-info__languages">
-                      <h3 class="additional-info__languages-header">Languages</h3>
-                      <p class="additional-info__languages-item">English <small>B+</small> </p>
-                      <p class="additional-info__languages-item">
-                        Ukrainian <small>native</small>
-                      </p>
+            
+                  </div>
+                </div>
+            
+                <div class="timeline__item right">
+                  <div class="timeline__content js-toggle">
+                    <h3>2022–2023 — Full-Stack Development Trainee</h3>
+                    <div class="timeline__details">
+                      <p>GoIT (Online Bootcamp)</p>
+                      <ul>
+                        <li>Completed intensive course focused on React, Node.js, MongoDB, PostgreSQL.</li>
+                        <li>Developed several full-cycle pet projects.</li>
+                        <li>Used Git and agile practices in collaboration with teams.</li>
+                      </ul>
                     </div>
                   </div>
+                </div>
+            
+                <div class="timeline__item left">
+                  <div class="timeline__content js-toggle">
+                    <h3>2023-2025 — Freelance Developer</h3>
+                    <div class="timeline__details">
+                      <p>Self-employed</p>
+                      <ul>
+                        <li>Delivered client websites and web applications end-to-end.</li>
+                        <li>Managed project timelines, communication, and tech stack independently.</li>
+                        <li>Continually honed technical and soft skills via real-world projects.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                
               </div>
-            </div>
+              <h2 class="hero__title">So...We are here, huh?</h2>
+
+            </section>
           </div>
         
       </div>
