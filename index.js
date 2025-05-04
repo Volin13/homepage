@@ -31,7 +31,8 @@ function updateShadow(e) {
 document.addEventListener('mousemove', updateShadow);
 document.addEventListener('touchmove', updateShadow);
 
-const items = document.querySelectorAll('.timeline__item');
+
+const items = document.querySelectorAll('.js-toggle');
 
 items.forEach(item => {
   const details = item.querySelector('.timeline__details');
@@ -49,6 +50,19 @@ items.forEach(item => {
     }
   });
 
+  // Focus / Blur (for keyboard navigation)
+  item.addEventListener('focus', () => {
+    if (window.innerWidth >= 1280) {
+      expand(details);
+    }
+  });
+
+  item.addEventListener('blur', () => {
+    if (window.innerWidth >= 1280) {
+      collapse(details);
+    }
+  });
+
   // Mobile/Tablet: Click (toggle)
   item.addEventListener('click', () => {
     if (window.innerWidth < 1280) {
@@ -59,16 +73,27 @@ items.forEach(item => {
       }
     }
   });
+
+  // Keyboard toggle for mobile/tablet (optional)
+  item.addEventListener('keydown', (e) => {
+    if (window.innerWidth < 1280 && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault(); // запобігає скролу на Space
+      item.click(); // емуляція кліку
+    }
+  });
 });
 
 function expand(details) {
-  const scrollHeight = details.scrollHeight;
-  details.style.height = scrollHeight + 'px';
+  details.style.height = details.scrollHeight + 'px';
   details.style.opacity = 1;
+  details.style.overflow = 'hidden';
+  details.style.transition = 'height 0.3s ease, opacity 0.3s ease';
 }
 
 function collapse(details) {
   details.style.height = '0px';
   details.style.opacity = 0;
+  details.style.overflow = 'hidden';
 }
+
 
