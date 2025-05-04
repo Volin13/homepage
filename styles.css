@@ -148,11 +148,31 @@ body {
   text-align: justify;
 }
 
+/* SKILLS  */
+
 .skills__header {
   color: var(--secondary-text-color);
   text-align: center;
   font-size: 24px;
 }
+.skills__header span {
+  display: block;
+}
+.skills__header .soft {
+  transition: filter 0.4s ease, opacity 0.4s ease;
+}
+
+.skills__header:hover .soft {
+  filter: blur(4px);
+  opacity: 0.6;
+}
+.skills__header:hover .hard {
+  text-shadow: 0 0 3px #000, 0 0 8px var(--durability-text-color);
+  transform: scale(1.05);
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
 .skills__el-mb{
   margin-bottom: 15px;
 }
@@ -180,6 +200,38 @@ body {
   display: inline-block;
   overflow: hidden;
 
+}
+
+.skills__item .poof-icon,
+.skills__item .emoji-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+
+.poof-icon,
+.emoji-icon {
+  width: 40px;
+  height: 40px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+.skills__item:hover .trait-text {
+  opacity: 0;
+}
+
+.skills__item:hover .poof-icon {
+  opacity: 1;
+  animation: poofFadeOut 0.4s ease forwards;
+}
+
+.skills__item:hover .emoji-icon {
+  animation: emojiFadeIn 0.6s ease forwards;
+  animation-delay: 0.4s;
 }
 /* Experience and additional info styles */
 
@@ -491,43 +543,7 @@ body {
   100% {transform: translateX(200%)}
 }
 
-
-
-
-
-.skills__item .poof-icon,
-.skills__item .emoji-icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease;
-}
-
-.poof-icon,
-.emoji-icon {
-  width: 40px;
-  height: 40px;
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Під час наведення */
-.skills__item:hover .trait-text {
-  opacity: 0;
-}
-
-.skills__item:hover .poof-icon {
-  opacity: 1;
-  animation: poofFadeOut 0.4s ease forwards;
-}
-
-.skills__item:hover .emoji-icon {
-  animation: emojiFadeIn 0.6s ease forwards;
-  animation-delay: 0.4s;
-}
-
-/* Анімації */
+/* skills */
 @keyframes poofFadeOut {
   0% {
     opacity: 1;
@@ -549,3 +565,14 @@ body {
     transform: translate(-50%, -50%) scale(1) rotate(0);
   }
 }
+
+.vibrate {
+  animation: subtle-shake 1s infinite;
+}
+@keyframes subtle-shake {
+  0%, 100% { transform: translate(0); }
+  25% { transform: translate(0.5px, -0.5px); }
+  50% { transform: translate(-0.5px, 0.5px); }
+  75% { transform: translate(0.5px, 0.5px); }
+}
+
