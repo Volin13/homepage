@@ -223,6 +223,7 @@ body {
   position: relative;
   margin: 0 auto;
   padding: 2rem 1rem;
+  cursor: pointer;
 }
 
 .timeline__container::after {
@@ -544,7 +545,7 @@ body {
 }
 
 .vibrate {
-  animation: subtle-shake 1s infinite;
+  animation: subtle-shake 3s infinite;
 }
 @keyframes subtle-shake {
   0%, 100% { transform: translate(0); }
